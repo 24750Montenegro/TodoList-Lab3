@@ -19,6 +19,16 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModel
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
 import com.uvg.todolist_lab3.ui.theme.TodoListLab3Theme
 
 data class lista(
@@ -64,6 +74,7 @@ class MainActivity : ComponentActivity() {
                     Spacer(modifier = Modifier.height(8.dp))
                     Lista(viewModel = viewModel)
                 }
+                PantallaConFondoLocal()
             }
         }
     }
@@ -138,5 +149,13 @@ fun PreviewLista() {
     TodoListLab3Theme {
         val vm = ToDoModel().apply { addLista("Tarea de prueba") }
         Lista(viewModel = vm)
+fun PantallaConFondoLocal() {
+    Box(Modifier.fillMaxSize()) {
+        Image(
+            painter = painterResource(R.drawable.fondo),
+            contentDescription = null,
+            modifier = Modifier.fillMaxSize(),
+            contentScale = ContentScale.Crop
+        )
     }
 }
